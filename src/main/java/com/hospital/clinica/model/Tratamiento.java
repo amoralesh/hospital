@@ -36,4 +36,54 @@ public class Tratamiento {
 	@JoinColumn(name="id_periodo")
 	private Periodo periodo;
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public Consulta getConsulta() {
+		return consulta;
+	}
+
+	public void setConsulta(Consulta consulta) {
+		this.consulta = consulta;
+	}
+
+	public String getDosis() {
+		return dosis;
+	}
+
+	public void setDosis(String dosis) {
+		this.dosis = dosis;
+	}
+
+	public String getCadaCuando() {
+		return cadaCuando;
+	}
+
+	public void setCadaCuando(String cadaCuando) {
+		this.cadaCuando = cadaCuando;
+	}
+
+	public ModoAplicacion getModoAplicacion() {
+		return modoAplicacion;
+	}
+
+	public void setModoAplicacion(ModoAplicacion modoAplicacion) {
+		this.modoAplicacion = modoAplicacion;
+	}
+
+	public Periodo getPeriodo() {
+		return periodo;
+	}
+
+	public void setPeriodo(Periodo periodo) {
+		this.periodo = periodo;
+	}
+	
+	
+
 }

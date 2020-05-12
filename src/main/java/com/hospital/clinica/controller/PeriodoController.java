@@ -13,42 +13,39 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.hospital.clinica.model.Genero;
-import com.hospital.clinica.service.GeneroService;
+import com.hospital.clinica.model.Periodo;
+import com.hospital.clinica.service.PeriodoService;
 
 @RestController
-@RequestMapping("/generos")
-public class GeneroController {
+@RequestMapping("/periodos")
+public class PeriodoController {
 	
 	@Autowired
-	private GeneroService<Genero> services; 
+	private PeriodoService<Periodo> services; 
 
 	
-	
-	@GetMapping(value="/genero",produces = "application/json")
-	public List<Genero> listar(){
+	@GetMapping(value="/periodo",produces = "application/json")
+	public List<Periodo> listar(){
 		return services.lista();
 	}
 	
-	@GetMapping(value="/genero/{id}", produces = "application/json")
-	public Optional<Genero> listaId(@PathVariable("id") int id) {
+	@GetMapping(value="/periodo/{id}", produces = "application/json")
+	public Optional<Periodo> listaId(@PathVariable("id") int id) {
 		return services.listaId(id);
 	}
 	
 	@PostMapping(value="/nuevo",produces = "application/json", consumes = "application/json")
-	public Genero registrar (@RequestBody Genero genero) {
-		return (Genero) services.registrar(genero);
+	public Periodo registrar (@RequestBody Periodo periodo) {
+		return (Periodo) services.registrar(periodo);
 	}
 	
 	@PutMapping(value="/actualizar",produces = "application/json", consumes = "application/json")
-	public Genero modificar (@RequestBody Genero genero) {
-		return (Genero) services.modificar(genero);
+	public Periodo modificar (@RequestBody Periodo periodo) {
+		return (Periodo) services.modificar(periodo);
 	}
 	
 	@DeleteMapping(value="/eliminar/{id}")
 	public void eliminar (@PathVariable("id") int id) {
 		services.eliminar(id);
 	}
-	
-
 }

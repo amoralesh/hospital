@@ -21,7 +21,7 @@ import com.hospital.clinica.service.PacienteService;
 public class PacienteController {
 
 	@Autowired
-	private PacienteService services;
+	private PacienteService<Paciente> services;
 	
 	
 	@GetMapping(value="/paciente",produces = "application/json")
@@ -30,7 +30,7 @@ public class PacienteController {
 	}
 	
 	@GetMapping(value="/paciente/{id}", produces = "application/json")
-	public Optional listaId(@PathVariable("id") int id) {
+	public Optional<Paciente> listaId(@PathVariable("id") int id) {
 		return services.listaId(id);
 	}
 	
@@ -39,7 +39,7 @@ public class PacienteController {
 		return (Paciente) services.registrar(paciente);
 	}
 	
-	@PutMapping(produces = "application/json", consumes = "application/json")
+	@PutMapping(value="/editar",produces = "application/json", consumes = "application/json")
 	public Paciente modificar (@RequestBody Paciente paciente) {
 		return (Paciente) services.modificar(paciente);
 	}

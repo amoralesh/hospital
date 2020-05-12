@@ -13,36 +13,35 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.hospital.clinica.model.Genero;
-import com.hospital.clinica.service.GeneroService;
+import com.hospital.clinica.model.Doctor;
+import com.hospital.clinica.service.DoctorService;
 
 @RestController
-@RequestMapping("/generos")
-public class GeneroController {
+@RequestMapping("/doctores")
+public class DoctorController {
 	
 	@Autowired
-	private GeneroService<Genero> services; 
+	private DoctorService<Doctor> services; 
 
 	
-	
-	@GetMapping(value="/genero",produces = "application/json")
-	public List<Genero> listar(){
+	@GetMapping(value="/doctor",produces = "application/json")
+	public List<Doctor> listar(){
 		return services.lista();
 	}
 	
-	@GetMapping(value="/genero/{id}", produces = "application/json")
-	public Optional<Genero> listaId(@PathVariable("id") int id) {
+	@GetMapping(value="/doctor/{id}", produces = "application/json")
+	public Optional<Doctor> listaId(@PathVariable("id") int id) {
 		return services.listaId(id);
 	}
 	
 	@PostMapping(value="/nuevo",produces = "application/json", consumes = "application/json")
-	public Genero registrar (@RequestBody Genero genero) {
-		return (Genero) services.registrar(genero);
+	public Doctor registrar (@RequestBody Doctor doctor) {
+		return (Doctor) services.registrar(doctor);
 	}
 	
 	@PutMapping(value="/actualizar",produces = "application/json", consumes = "application/json")
-	public Genero modificar (@RequestBody Genero genero) {
-		return (Genero) services.modificar(genero);
+	public Doctor modificar (@RequestBody Doctor doctor) {
+		return (Doctor) services.modificar(doctor);
 	}
 	
 	@DeleteMapping(value="/eliminar/{id}")

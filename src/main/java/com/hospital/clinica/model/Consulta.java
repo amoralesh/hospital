@@ -37,4 +37,46 @@ public class Consulta {
 	@OneToMany(mappedBy = "consulta", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Tratamiento> tratamiento;
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getDiagnostico() {
+		return diagnostico;
+	}
+
+	public void setDiagnostico(String diagnostico) {
+		this.diagnostico = diagnostico;
+	}
+
+	public Paciente getPaciente() {
+		return paciente;
+	}
+
+	public void setPaciente(Paciente paciente) {
+		this.paciente = paciente;
+	}
+
+	public Doctor getDoctor() {
+		return doctor;
+	}
+
+	public void setDoctor(Doctor doctor) {
+		this.doctor = doctor;
+	}
+
+	public List<Tratamiento> getTratamiento() {
+		return tratamiento;
+	}
+
+	public void setTratamiento(List<Tratamiento> tratamiento) {
+		this.tratamiento = tratamiento;
+	}
+	
+	
+
 }

@@ -13,42 +13,40 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.hospital.clinica.model.Genero;
-import com.hospital.clinica.service.GeneroService;
+import com.hospital.clinica.model.ModoAplicacion;
+import com.hospital.clinica.service.ModoAplicacionService;
 
 @RestController
-@RequestMapping("/generos")
-public class GeneroController {
+@RequestMapping("/modoaplicacion")
+public class ModoAplicacionController {
 	
 	@Autowired
-	private GeneroService<Genero> services; 
+	private ModoAplicacionService<ModoAplicacion> services; 
 
 	
-	
-	@GetMapping(value="/genero",produces = "application/json")
-	public List<Genero> listar(){
+	@GetMapping(value="/modoaplicacion",produces = "application/json")
+	public List<ModoAplicacion> listar(){
 		return services.lista();
 	}
 	
-	@GetMapping(value="/genero/{id}", produces = "application/json")
-	public Optional<Genero> listaId(@PathVariable("id") int id) {
+	@GetMapping(value="/modoaplicacion/{id}", produces = "application/json")
+	public Optional<ModoAplicacion> listaId(@PathVariable("id") int id) {
 		return services.listaId(id);
 	}
 	
 	@PostMapping(value="/nuevo",produces = "application/json", consumes = "application/json")
-	public Genero registrar (@RequestBody Genero genero) {
-		return (Genero) services.registrar(genero);
+	public ModoAplicacion registrar (@RequestBody ModoAplicacion modoAplicacion) {
+		return (ModoAplicacion) services.registrar(modoAplicacion);
 	}
 	
 	@PutMapping(value="/actualizar",produces = "application/json", consumes = "application/json")
-	public Genero modificar (@RequestBody Genero genero) {
-		return (Genero) services.modificar(genero);
+	public ModoAplicacion modificar (@RequestBody ModoAplicacion modoAplicacion) {
+		return (ModoAplicacion) services.modificar(modoAplicacion);
 	}
 	
 	@DeleteMapping(value="/eliminar/{id}")
 	public void eliminar (@PathVariable("id") int id) {
 		services.eliminar(id);
 	}
-	
 
 }

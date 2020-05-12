@@ -13,42 +13,40 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.hospital.clinica.model.Genero;
-import com.hospital.clinica.service.GeneroService;
+import com.hospital.clinica.model.Direccion;
+import com.hospital.clinica.service.DireccionService;
 
 @RestController
-@RequestMapping("/generos")
-public class GeneroController {
+@RequestMapping("/direcciones")
+public class DireccionController {
 	
 	@Autowired
-	private GeneroService<Genero> services; 
+	private DireccionService<Direccion> services; 
 
 	
-	
-	@GetMapping(value="/genero",produces = "application/json")
-	public List<Genero> listar(){
+	@GetMapping(value="/direccion",produces = "application/json")
+	public List<Direccion> listar(){
 		return services.lista();
 	}
 	
-	@GetMapping(value="/genero/{id}", produces = "application/json")
-	public Optional<Genero> listaId(@PathVariable("id") int id) {
+	@GetMapping(value="/direccion/{id}", produces = "application/json")
+	public Optional<Direccion> listaId(@PathVariable("id") int id) {
 		return services.listaId(id);
 	}
 	
-	@PostMapping(value="/nuevo",produces = "application/json", consumes = "application/json")
-	public Genero registrar (@RequestBody Genero genero) {
-		return (Genero) services.registrar(genero);
+	@PostMapping(value="/nueva",produces = "application/json", consumes = "application/json")
+	public Direccion registrar (@RequestBody Direccion direccion) {
+		return (Direccion) services.registrar(direccion);
 	}
 	
 	@PutMapping(value="/actualizar",produces = "application/json", consumes = "application/json")
-	public Genero modificar (@RequestBody Genero genero) {
-		return (Genero) services.modificar(genero);
+	public Direccion modificar (@RequestBody Direccion direccion) {
+		return (Direccion) services.modificar(direccion);
 	}
 	
 	@DeleteMapping(value="/eliminar/{id}")
 	public void eliminar (@PathVariable("id") int id) {
 		services.eliminar(id);
 	}
-	
 
 }

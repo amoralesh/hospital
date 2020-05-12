@@ -45,8 +45,78 @@ public class Direccion {
 	
 	@Column(name="numero_interior", length = 1000, nullable = true)
 	private String numeroInterior;
-	
-	
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public Paciente getPaciente() {
+		return paciente;
+	}
+
+	public void setPaciente(Paciente paciente) {
+		this.paciente = paciente;
+	}
+
+	public EntidadFederativa getEntidadFederativa() {
+		return entidadFederativa;
+	}
+
+	public void setEntidadFederativa(EntidadFederativa entidadFederativa) {
+		this.entidadFederativa = entidadFederativa;
+	}
+
+	public AlcaldiaMunicipio getAlcaldiaMunicipio() {
+		return alcaldiaMunicipio;
+	}
+
+	public void setAlcaldiaMunicipio(AlcaldiaMunicipio alcaldiaMunicipio) {
+		this.alcaldiaMunicipio = alcaldiaMunicipio;
+	}
+
+	public String getColonia() {
+		return colonia;
+	}
+
+	public void setColonia(String colonia) {
+		this.colonia = colonia;
+	}
+
+	public int getCodigoPostal() {
+		return codigoPostal;
+	}
+
+	public void setCodigoPostal(int codigoPostal) {
+		this.codigoPostal = codigoPostal;
+	}
+
+	public String getCalle() {
+		return calle;
+	}
+
+	public void setCalle(String calle) {
+		this.calle = calle;
+	}
+
+	public String getNumeroExterior() {
+		return numeroExterior;
+	}
+
+	public void setNumeroExterior(String numeroExterior) {
+		this.numeroExterior = numeroExterior;
+	}
+
+	public String getNumeroInterior() {
+		return numeroInterior;
+	}
+
+	public void setNumeroInterior(String numeroInterior) {
+		this.numeroInterior = numeroInterior;
+	}
 	
 
 }
