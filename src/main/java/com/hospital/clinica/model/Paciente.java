@@ -45,7 +45,7 @@ public class Paciente {
 	
 	@ManyToOne
 	@JoinColumn(name="id_estado_civil")
-	private EstadoCivil EstadoCivil;
+	private EstadoCivil estadoCivil;
 	
     @Column(name="curp",length = 21,nullable = true)
 	private String curp;
@@ -54,10 +54,10 @@ public class Paciente {
 	private String correo;
     
     @Column(name="telefono",length = 12,nullable = true)
-	private int telefono;
+	private Integer telefono;
     
     @Column(name="telefono_celular",length = 12,nullable = true)
-	private int telefonoCelular;
+	private Integer telefonoCelular;
     
     @Column(name="estatus", nullable = false)
 	private boolean estatus;
@@ -120,11 +120,11 @@ public class Paciente {
 	}
 
 	public EstadoCivil getEstadoCivil() {
-		return EstadoCivil;
+		return estadoCivil;
 	}
 
 	public void setEstadoCivil(EstadoCivil estadoCivil) {
-		this.EstadoCivil = estadoCivil;
+		this.estadoCivil = estadoCivil;
 	}
 
 	public String getCurp() {
