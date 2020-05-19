@@ -14,35 +14,36 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.hospital.clinica.model.EstadoCivil;
-import com.hospital.clinica.service.EstadoCivilService;
+import com.hospital.clinica.model.EntidadFederativa;
+import com.hospital.clinica.service.EntidadFederativaService;
+
 @CrossOrigin(origins="http://localhost:4200")
 @RestController
-@RequestMapping("/estadosciviles")
-public class EstadoCivilController {
+@RequestMapping("/entidadesfederativas")
+public class EntidadFederativaController {
 	
 	@Autowired
-	private EstadoCivilService<EstadoCivil> services; 
+	private EntidadFederativaService<EntidadFederativa> services; 
 
 	
-	@GetMapping(value="/estadocivil",produces = "application/json")
-	public List<EstadoCivil> listar(){
+	@GetMapping(value="/entidadfederativa",produces = "application/json")
+	public List<EntidadFederativa> listar(){
 		return services.lista();
 	}
 	
-	@GetMapping(value="/estadocivil/{id}", produces = "application/json")
-	public Optional<EstadoCivil> listaId(@PathVariable("id") int id) {
+	@GetMapping(value="/entidadfederativa/{id}", produces = "application/json")
+	public Optional<EntidadFederativa> listaId(@PathVariable("id") int id) {
 		return services.listaId(id);
 	}
 	
-	@PostMapping(value="/nuevo",produces = "application/json", consumes = "application/json")
-	public EstadoCivil registrar (@RequestBody EstadoCivil estadoCivil) {
-		return (EstadoCivil) services.registrar(estadoCivil);
+	@PostMapping(value="/nueva",produces = "application/json", consumes = "application/json")
+	public EntidadFederativa registrar (@RequestBody EntidadFederativa entidadFederativa) {
+		return (EntidadFederativa) services.registrar(entidadFederativa);
 	}
 	
 	@PutMapping(value="/actualizar",produces = "application/json", consumes = "application/json")
-	public EstadoCivil modificar (@RequestBody EstadoCivil estadoCivil) {
-		return (EstadoCivil) services.modificar(estadoCivil);
+	public EntidadFederativa modificar (@RequestBody EntidadFederativa entidadFederativa) {
+		return (EntidadFederativa) services.modificar(entidadFederativa);
 	}
 	
 	@DeleteMapping(value="/eliminar/{id}")

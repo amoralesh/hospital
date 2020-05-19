@@ -62,13 +62,13 @@ public class Paciente {
     @Column(name="estatus", nullable = false)
 	private boolean estatus;
     
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+  
     private LocalDateTime fechaAlta;
     
     @OneToMany(mappedBy = "paciente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
  	private List<Consulta> consulta;
     
-    @OneToOne (mappedBy="paciente")
+    @OneToOne (mappedBy="paciente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Direccion direccion;
 
 	public int getId() {

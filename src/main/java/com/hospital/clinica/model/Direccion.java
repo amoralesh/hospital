@@ -10,6 +10,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="direccion")
 public class Direccion {
@@ -19,6 +21,7 @@ public class Direccion {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
+	@JsonIgnore
 	@OneToOne
     @JoinColumn (name="id_paciente",nullable = false)
 	private Paciente paciente;

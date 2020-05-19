@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hospital.clinica.dao.PacienteDao;
+import com.hospital.clinica.model.Direccion;
 import com.hospital.clinica.model.Paciente;
 import com.hospital.clinica.service.PacienteService;
 
@@ -19,6 +20,10 @@ public class PacienteServiceImpl implements PacienteService<Paciente>{
 	
 	@Override
 	public Paciente registrar(Paciente paciente) {
+		
+	     Direccion direccion= paciente.getDireccion();
+	     direccion.setPaciente(paciente);
+		
 		return dao.save(paciente);
 	}
 

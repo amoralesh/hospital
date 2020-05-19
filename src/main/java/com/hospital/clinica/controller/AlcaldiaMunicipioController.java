@@ -14,35 +14,37 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.hospital.clinica.model.EstadoCivil;
-import com.hospital.clinica.service.EstadoCivilService;
+import com.hospital.clinica.model.AlcaldiaMunicipio;
+import com.hospital.clinica.service.AlcaldiaMunicipioService;
+
 @CrossOrigin(origins="http://localhost:4200")
 @RestController
-@RequestMapping("/estadosciviles")
-public class EstadoCivilController {
+@RequestMapping("/alcaldias")
+public class AlcaldiaMunicipioController {
 	
 	@Autowired
-	private EstadoCivilService<EstadoCivil> services; 
+	private AlcaldiaMunicipioService<AlcaldiaMunicipio> services; 
 
 	
-	@GetMapping(value="/estadocivil",produces = "application/json")
-	public List<EstadoCivil> listar(){
+	
+	@GetMapping(value="/alcaldia",produces = "application/json")
+	public List<AlcaldiaMunicipio> listar(){
 		return services.lista();
 	}
 	
-	@GetMapping(value="/estadocivil/{id}", produces = "application/json")
-	public Optional<EstadoCivil> listaId(@PathVariable("id") int id) {
+	@GetMapping(value="/alcaldia/{id}", produces = "application/json")
+	public Optional<AlcaldiaMunicipio> listaId(@PathVariable("id") int id) {
 		return services.listaId(id);
 	}
 	
-	@PostMapping(value="/nuevo",produces = "application/json", consumes = "application/json")
-	public EstadoCivil registrar (@RequestBody EstadoCivil estadoCivil) {
-		return (EstadoCivil) services.registrar(estadoCivil);
+	@PostMapping(value="/nueva",produces = "application/json", consumes = "application/json")
+	public AlcaldiaMunicipio registrar (@RequestBody AlcaldiaMunicipio alcaldiaMunicipio) {
+		return (AlcaldiaMunicipio) services.registrar(alcaldiaMunicipio);
 	}
 	
 	@PutMapping(value="/actualizar",produces = "application/json", consumes = "application/json")
-	public EstadoCivil modificar (@RequestBody EstadoCivil estadoCivil) {
-		return (EstadoCivil) services.modificar(estadoCivil);
+	public AlcaldiaMunicipio modificar (@RequestBody AlcaldiaMunicipio alcaldiaMunicipio) {
+		return (AlcaldiaMunicipio) services.modificar(alcaldiaMunicipio);
 	}
 	
 	@DeleteMapping(value="/eliminar/{id}")
