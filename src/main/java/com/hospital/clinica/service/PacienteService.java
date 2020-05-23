@@ -3,6 +3,8 @@ package com.hospital.clinica.service;
 import java.util.List;
 import java.util.Optional;
 
+import java.sql.Array;
+
 
 public interface PacienteService <Paciente> {
 	
@@ -15,5 +17,7 @@ public interface PacienteService <Paciente> {
 	Optional<Paciente>  listaId(int id);
 	
 	List<Paciente> lista();
-
+	
+	String[] generoPaciente();
+	
 }

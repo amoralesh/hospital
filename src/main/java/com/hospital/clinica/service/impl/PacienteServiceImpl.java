@@ -1,5 +1,6 @@
 package com.hospital.clinica.service.impl;
 
+import java.sql.Array;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,6 +30,9 @@ public class PacienteServiceImpl implements PacienteService<Paciente>{
 
 	@Override
 	public Paciente modificar(Paciente paciente) {
+		
+		  Direccion direccion= paciente.getDireccion();
+		     direccion.setPaciente(paciente);
 		return dao.save(paciente);
 	}
 
@@ -46,5 +50,12 @@ public class PacienteServiceImpl implements PacienteService<Paciente>{
 	public Optional<Paciente> listaId(int id) {
 		return dao.findById(id);
 	}
+
+	@Override
+	public String[] generoPaciente() {
+		return dao.countGenero();
+	}
+	
+	
 
 }

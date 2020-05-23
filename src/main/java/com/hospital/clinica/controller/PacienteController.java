@@ -2,6 +2,7 @@ package com.hospital.clinica.controller;
 
 import java.util.List;
 import java.util.Optional;
+import java.sql.Array;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -49,6 +50,11 @@ public class PacienteController {
 	@DeleteMapping(value="/eliminar/{id}")
 	public void eliminar (@PathVariable("id") int id) {
 		services.eliminar(id);
+	}
+	
+	@GetMapping(value="/countGenero",produces = "application/json")
+	public String[] countGenero(){
+		return services.generoPaciente();
 	}
 	
 }
