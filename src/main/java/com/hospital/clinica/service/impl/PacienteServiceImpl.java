@@ -1,6 +1,5 @@
 package com.hospital.clinica.service.impl;
 
-import java.sql.Array;
 import java.util.List;
 import java.util.Optional;
 

@@ -12,6 +12,10 @@ import javax.persistence.Table;
 @Table(name="imagen_usuario")
 public class ImagenUsuario {
 	
+	public ImagenUsuario() {
+		super();
+	}
+	
 	public ImagenUsuario(String nombre, String type, byte[] imagenByte) {
 		this.nombre = nombre;
 		this.type = type;
@@ -32,5 +36,39 @@ public class ImagenUsuario {
 	@Lob
 	@Column(name= "imagen_byte")
 	private byte[] imagenByte;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public byte[] getImagenByte() {
+		return imagenByte;
+	}
+
+	public void setImagenByte(byte[] imagenByte) {
+		this.imagenByte = imagenByte;
+	}
+	
+	
 
 }
