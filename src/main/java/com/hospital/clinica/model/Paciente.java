@@ -36,6 +36,9 @@ public class Paciente {
 	@Column(name="apellido_M", length = 500, nullable = true)
 	private String apellidoM;
 	
+	@Column(name="fecha_nacimiento", nullable = true)
+	private LocalDateTime fechaNacimiento;
+	
 	@Column(name="edad",length = 3, nullable = true)
 	private int edad;
 	
@@ -62,7 +65,6 @@ public class Paciente {
     @Column(name="estatus", nullable = false)
 	private boolean estatus;
     
-  
     private LocalDateTime fechaAlta;
     
     @OneToMany(mappedBy = "paciente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -70,6 +72,8 @@ public class Paciente {
     
     @OneToOne (mappedBy="paciente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Direccion direccion;
+    
+    
 
 	public int getId() {
 		return id;
@@ -189,6 +193,22 @@ public class Paciente {
 
 	public void setDireccion(Direccion direccion) {
 		this.direccion = direccion;
+	}
+
+	public LocalDateTime getFechaNacimiento() {
+		return fechaNacimiento;
+	}
+
+	public void setFechaNacimiento(LocalDateTime fechaNacimiento) {
+		this.fechaNacimiento = fechaNacimiento;
+	}
+
+	public void setTelefono(Integer telefono) {
+		this.telefono = telefono;
+	}
+
+	public void setTelefonoCelular(Integer telefonoCelular) {
+		this.telefonoCelular = telefonoCelular;
 	}
 	
     

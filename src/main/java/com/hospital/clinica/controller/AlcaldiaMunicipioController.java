@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.hospital.clinica.model.AlcaldiaMunicipio;
 import com.hospital.clinica.service.AlcaldiaMunicipioService;
 
+
 @CrossOrigin(origins="http://localhost:4200")
 @RestController
 @RequestMapping("/alcaldias")
@@ -24,7 +25,6 @@ public class AlcaldiaMunicipioController {
 	
 	@Autowired
 	private AlcaldiaMunicipioService<AlcaldiaMunicipio> services; 
-
 	
 	
 	@GetMapping(value="/alcaldia",produces = "application/json")
