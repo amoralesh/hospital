@@ -24,8 +24,6 @@ public class GeneroController {
 	@Autowired
 	private GeneroService<Genero> services; 
 
-	
-	
 	@GetMapping(value="/genero",produces = "application/json")
 	public List<Genero> listar(){
 		return services.lista();

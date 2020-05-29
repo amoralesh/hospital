@@ -20,9 +20,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.http.HttpStatus;
 
 import com.hospital.clinica.dao.ImagenUsuarioDao;
+import com.hospital.clinica.model.Direccion;
 import com.hospital.clinica.model.ImagenUsuario;
 import com.hospital.clinica.service.ImagenUsuarioService;
 
@@ -34,38 +34,19 @@ public class ImagenUsuarioController {
 	@Autowired
 	private ImagenUsuarioService<ImagenUsuario> services; 
 	
-	@Autowired
-	ImagenUsuarioDao dao;
-
-	@GetMapping(value="/usuario",produces = "application/json")
+	@GetMapping(value="/todas",produces = "application/json")
 	public List<ImagenUsuario> listar(){
 		return services.lista();
 	}
 	
-	@GetMapping(value="/alcaldia/{id}", produces = "application/json")
+	@GetMapping(value="/imagen/{id}", produces = "application/json")
 	public Optional<ImagenUsuario> listaId(@PathVariable("id") int id) {
 		return services.listaId(id);
 	}
 	
-	@GetMapping(path = { "/get/{idImagen}" })
-	public ImagenUsuario getImage(@PathVariable("idImagen") Integer idImagen) throws IOException {
-		final Optional<ImagenUsuario> retrievedImage = dao.findById(idImagen);
-		ImagenUsuario img = new ImagenUsuario(retrievedImage.get().getNombre(), retrievedImage.get().getType(),
-				decompressBytes(retrievedImage.get().getImagenByte()));
-		return img;
-	}
-	
-	
-	@PostMapping(value="/nueva")
-	public HttpStatus registrar (@RequestParam("miArchivo") MultipartFile file) throws IOException {
-		System.out.println("Original Image Byte Size - " + file.getBytes().length);
-		ImagenUsuario img = new ImagenUsuario(file.getOriginalFilename(), file.getContentType(),
-				compressBytes(file.getBytes()));
-		dao.save(img);
-		return (HttpStatus.OK);
-	
-		
-		//return (ImagenUsuario) services.registrar(imagenUsuario);
+	@PostMapping(value="/nueva",produces = "application/json", consumes = "application/json")
+	public ImagenUsuario registrar (@RequestBody ImagenUsuario imagenUsuario) {
+		return (ImagenUsuario) services.registrar(imagenUsuario);
 	}
 	
 	@PutMapping(value="/actualizar",produces = "application/json", consumes = "application/json")
@@ -77,6 +58,45 @@ public class ImagenUsuarioController {
 	public void eliminar (@PathVariable("id") int id) {
 		services.eliminar(id);
 	}
+	
+	
+	/*@GetMapping(path = { "/get/{idImagen}" })
+	public ImagenUsuario getImage(@PathVariable("idImagen") Integer idImagen) throws IOException {
+		final Optional<ImagenUsuario> retrievedImage = dao.findById(idImagen);
+		ImagenUsuario img = new ImagenUsuario(retrievedImage.get().getNombre(), retrievedImage.get().getType(),
+				decompressBytes(retrievedImage.get().getImagenByte()));
+		return img;
+	}*/
+	
+	
+	/*@PostMapping(value="/nueva",produces = "application/json", consumes = "application/json")
+	public HttpStatus registrar (@RequestParam("miArchivo") MultipartFile file) throws IOException {
+		System.out.println("Original Image Byte Size - " + file.getBytes().length);
+		ImagenUsuario img = new ImagenUsuario(file.getOriginalFilename(), file.getContentType(),
+				compressBytes(file.getBytes()));
+		dao.save(img);
+		return (HttpStatus.OK);
+			
+		//return (ImagenUsuario) services.registrar(imagenUsuario);
+	}*/
+
+	/*@PostMapping(value="/nueva",produces = "application/json", consumes = "application/json")
+	
+	public ImagenUsuario registrar(@RequestParam("miArchivo") MultipartFile file) throws IOException {
+		 ImagenUsuario img = new ImagenUsuario(file.getOriginalFilename(), file.getContentType(),
+					compressBytes(file.getBytes()));
+			 return dao.save(img);
+			
+		//return dao.save(ImagenUsuario);
+	}*/
+	 
+		
+	   /* @PostMapping(value="/nueva",produces = "application/json", consumes = "application/json")
+		public ImagenUsuario registrar(ImagenUsuario ImagenUsuario) {
+			return dao.save(ImagenUsuario);
+		}*/
+	
+	
 	
 	public static byte[] compressBytes(byte[] data) {
 		Deflater deflater = new Deflater();

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.hospital.clinica.dao.PacienteDao;
 import com.hospital.clinica.model.Direccion;
+import com.hospital.clinica.model.ImagenUsuario;
 import com.hospital.clinica.model.Paciente;
 import com.hospital.clinica.service.PacienteService;
 
@@ -22,16 +23,20 @@ public class PacienteServiceImpl implements PacienteService<Paciente>{
 	public Paciente registrar(Paciente paciente) {
 		
 	     Direccion direccion= paciente.getDireccion();
+	     ImagenUsuario imagenUsuario= paciente.getImagenUsuario();
 	     direccion.setPaciente(paciente);
-		
-		return dao.save(paciente);
+	     imagenUsuario.setPaciente(paciente);
+		 return dao.save(paciente);
 	}
 
 	@Override
 	public Paciente modificar(Paciente paciente) {
 		
 		  Direccion direccion= paciente.getDireccion();
+		     ImagenUsuario imagenUsuario= paciente.getImagenUsuario();
 		     direccion.setPaciente(paciente);
+		     imagenUsuario.setPaciente(paciente);
+		     
 		return dao.save(paciente);
 	}
 

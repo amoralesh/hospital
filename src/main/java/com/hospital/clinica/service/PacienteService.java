@@ -3,7 +3,6 @@ package com.hospital.clinica.service;
 import java.util.List;
 import java.util.Optional;
 
-import java.sql.Array;
 
 
 public interface PacienteService <Paciente> {
