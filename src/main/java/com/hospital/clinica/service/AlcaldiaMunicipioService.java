@@ -16,4 +16,6 @@ public interface AlcaldiaMunicipioService <AlcaldiaMunicipio>{
 	
 	List<AlcaldiaMunicipio> lista();
 	
+	List<AlcaldiaMunicipio> findByIdEntidad (int id);
+	
 }

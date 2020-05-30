@@ -32,6 +32,11 @@ public class AlcaldiaMunicipioController {
 		return services.lista();
 	}
 	
+	@GetMapping(value="/municipio/alcaldia/{id}",produces = "application/json")
+	public  List<AlcaldiaMunicipio> findByIdEntidad (@PathVariable("id") int id) {
+		return services.findByIdEntidad(id); 
+	}
+	
 	@GetMapping(value="/alcaldia/{id}", produces = "application/json")
 	public Optional<AlcaldiaMunicipio> listaId(@PathVariable("id") int id) {
 		return services.listaId(id);
@@ -51,5 +56,7 @@ public class AlcaldiaMunicipioController {
 	public void eliminar (@PathVariable("id") int id) {
 		services.eliminar(id);
 	}
+	
+	
 
 }

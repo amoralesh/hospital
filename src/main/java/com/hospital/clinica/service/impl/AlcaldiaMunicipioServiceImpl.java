@@ -43,5 +43,10 @@ public class AlcaldiaMunicipioServiceImpl implements AlcaldiaMunicipioService<Al
 		return dao.findAll();
 	}
 
+	@Override
+	public List<AlcaldiaMunicipio> findByIdEntidad(int id) {
+		return (List<AlcaldiaMunicipio>) dao.findByIdEntidad(id);
+	}
+
 
 }
