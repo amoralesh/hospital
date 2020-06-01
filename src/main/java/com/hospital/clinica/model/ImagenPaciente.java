@@ -12,15 +12,29 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-
 @Entity
-@Table(name="imagen_usuario")
-public class ImagenUsuario {
+@Table(name="imagen_paciente")
+public class ImagenPaciente {
+	
+	public ImagenPaciente() {
+		super();
+	}
+	
+	public ImagenPaciente(String nombre, String type, byte[] imagenByte) {
+		this.nombre = nombre;
+		this.type = type;
+		this.imagenByte = imagenByte;
+	}
 	
 	@Id
 	@Column(name="id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	
+	@JsonIgnore
+	@OneToOne
+    @JoinColumn (name="id_paciente",nullable = false)
+	private Paciente paciente;
 	
 	@Column(name="nombre", length = 500,nullable = false)
 	private String nombre;
@@ -31,11 +45,6 @@ public class ImagenUsuario {
 	@Lob
 	@Column(name= "imagen_byte")
 	private byte[] imagenByte;
-	
-	@JsonIgnore
-	@OneToOne
-    @JoinColumn (name="id_usuario",nullable = false)
-	private Usuario usuario;
 
 	public int getId() {
 		return id;
@@ -69,12 +78,12 @@ public class ImagenUsuario {
 		this.imagenByte = imagenByte;
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
+	public Paciente getPaciente() {
+		return paciente;
 	}
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public void setPaciente(Paciente paciente) {
+		this.paciente = paciente;
 	}
 	
 	

@@ -3,7 +3,7 @@ package com.hospital.clinica.service;
 import java.util.List;
 import java.util.Optional;
 
-public interface ImagenUsuarioService <ImagenUsuario>{
+public interface ImagenPacienteService <ImagenUsuario>{
 	
 	ImagenUsuario registrar(ImagenUsuario imagenUsuario);
 	

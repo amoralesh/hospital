@@ -75,7 +75,7 @@ public class Paciente {
     
     
     @OneToOne (mappedBy="paciente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private ImagenUsuario imagenUsuario;
+    private ImagenPaciente imagenPaciente;
     
 
 	public int getId() {
@@ -214,12 +214,12 @@ public class Paciente {
 		this.telefonoCelular = telefonoCelular;
 	}
 
-	public ImagenUsuario getImagenUsuario() {
-		return imagenUsuario;
+	public ImagenPaciente getImagenPaciente() {
+		return imagenPaciente;
 	}
 
-	public void setImagenUsuario(ImagenUsuario imagenUsuario) {
-		this.imagenUsuario = imagenUsuario;
+	public void setImagenPaciente(ImagenPaciente imagenPaciente) {
+		this.imagenPaciente = imagenPaciente;
 	}
 	
     

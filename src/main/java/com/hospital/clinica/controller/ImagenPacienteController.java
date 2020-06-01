@@ -20,38 +20,36 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-
-import com.hospital.clinica.dao.ImagenUsuarioDao;
-import com.hospital.clinica.model.Direccion;
-import com.hospital.clinica.model.ImagenUsuario;
-import com.hospital.clinica.service.ImagenUsuarioService;
+import com.hospital.clinica.dao.ImagenPacienteDao;
+import com.hospital.clinica.model.ImagenPaciente;
+import com.hospital.clinica.service.ImagenPacienteService;
 
 @CrossOrigin(origins="http://localhost:4200")
 @RestController
 @RequestMapping("/imagen")
-public class ImagenUsuarioController {
+public class ImagenPacienteController {
 	
 	@Autowired
-	private ImagenUsuarioService<ImagenUsuario> services; 
+	private ImagenPacienteService<ImagenPaciente> services; 
 	
 	@GetMapping(value="/todas",produces = "application/json")
-	public List<ImagenUsuario> listar(){
+	public List<ImagenPaciente> listar(){
 		return services.lista();
 	}
 	
 	@GetMapping(value="/imagen/{id}", produces = "application/json")
-	public Optional<ImagenUsuario> listaId(@PathVariable("id") int id) {
+	public Optional<ImagenPaciente> listaId(@PathVariable("id") int id) {
 		return services.listaId(id);
 	}
 	
 	@PostMapping(value="/nueva",produces = "application/json", consumes = "application/json")
-	public ImagenUsuario registrar (@RequestBody ImagenUsuario imagenUsuario) {
-		return (ImagenUsuario) services.registrar(imagenUsuario);
+	public ImagenPaciente registrar (@RequestBody ImagenPaciente imagenUsuario) {
+		return (ImagenPaciente) services.registrar(imagenUsuario);
 	}
 	
 	@PutMapping(value="/actualizar",produces = "application/json", consumes = "application/json")
-	public ImagenUsuario modificar (@RequestBody ImagenUsuario imagenUsuario) {
-		return (ImagenUsuario) services.modificar(imagenUsuario);
+	public ImagenPaciente modificar (@RequestBody ImagenPaciente imagenUsuario) {
+		return (ImagenPaciente) services.modificar(imagenUsuario);
 	}
 	
 	@DeleteMapping(value="/eliminar/{id}")
