@@ -30,6 +30,9 @@ public class Doctor {
 	@Column(name="apellidos", length = 500, nullable = true)
 	private String apellidos;
 	
+	@Column(name="estatus" ,nullable = false)
+	private boolean estatus;
+	
 	@ManyToOne
 	@JoinColumn(name="id_area")
 	private Area area;

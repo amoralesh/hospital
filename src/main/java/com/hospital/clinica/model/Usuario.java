@@ -9,12 +9,11 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import com.hospital.clinica.service.impl.Permisos;
-
 
 @Entity
 @Table(name="usuario")
@@ -24,30 +23,76 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(name="nombre", length = 255, nullable = false)
-	private String nombre;
+	@Column(name="nombre", nullable = false, length = 50)
+	private String username;
 	
-	@Column(name="apellidoP", nullable = true)
-	private String apellidoP;
+	@Column(name="password", nullable = false , length = 255)
+	private String password;
 	
-	@Column(name="apellidoM", nullable = true)
-	private String apellidoM;
 	
-	@Column(name="usuario", nullable = false, length = 50)
-	private String usuario;
-	
-	@Column(name="password", nullable = false , length = 30)
-	private String passwod;
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name="usuarios_permisos", joinColumns = @JoinColumn(name="id_usuario", nullable = false,referencedColumnName = "id"),
+	inverseJoinColumns = @JoinColumn(name="id_permisos", nullable = false,referencedColumnName = "id") )
+	private List<Permisos> permisos;
 
 	
 	 @OneToOne (mappedBy="usuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	 private ImagenUsuario imagenUsuario;
-	 
-	 @ManyToMany(mappedBy = "usuario")
-	 private List<Permisos> permisos;
-	 
-	 
 
+
+	public int getId() {
+		return id;
+	}
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
+	public String getUsername() {
+		return username;
+	}
+
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+
+	public String getPassword() {
+		return password;
+	}
+
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+
+
+	public List<Permisos> getPermisos() {
+		return permisos;
+	}
+
+
+	public void setPermisos(List<Permisos> permisos) {
+		this.permisos = permisos;
+	}
+
+
+	public ImagenUsuario getImagenUsuario() {
+		return imagenUsuario;
+	}
+
+
+	public void setImagenUsuario(ImagenUsuario imagenUsuario) {
+		this.imagenUsuario = imagenUsuario;
+	}
+	 
+	
+
+	
 
 }
 

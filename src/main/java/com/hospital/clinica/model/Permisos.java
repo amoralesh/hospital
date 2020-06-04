@@ -1,4 +1,4 @@
-package com.hospital.clinica.service.impl;
+package com.hospital.clinica.model;
 
 import java.util.List;
 
@@ -14,10 +14,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import com.hospital.clinica.model.Usuario;
-
 @Entity
-@Table(name="persmisos")
+@Table(name="permisos")
 public class Permisos {
 	
 	@Id
@@ -28,13 +26,31 @@ public class Permisos {
 	private String nombre;
 	
 	@Column(name="descripcion", nullable = false)
-	private String descripcion; 
-	
-	
-	@ManyToMany(cascade= CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinTable(name="usuarios_permisos", joinColumns = @JoinColumn(name="id_usuario", nullable = false),
-	inverseJoinColumns = @JoinColumn(name="id_permisos", nullable = false) )
-	private List<Usuario> usuario;
+	private String descripcion;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
 	
 
 }
