@@ -34,19 +34,19 @@ public class Direccion {
 	@JoinColumn(name="alcaldia_municipio")
 	private AlcaldiaMunicipio alcaldiaMunicipio;
 	
-	@Column(name="colonia",length = 10000,nullable = true)
+	@Column(name="colonia",length = 255,nullable = true)
 	private String colonia;
 	
 	@Column(name="codigo_postal",length = 5,nullable = true)
 	private int codigoPostal;
 	
-	@Column(name="calle", length = 10000, nullable = true)
+	@Column(name="calle", length = 255, nullable = true)
 	private String calle;
 	
-	@Column(name="numero_exterior", length = 1000, nullable = true)
+	@Column(name="numero_exterior", length = 255, nullable = true)
 	private String numeroExterior;
 	
-	@Column(name="numero_interior", length = 1000, nullable = true)
+	@Column(name="numero_interior", length = 255, nullable = true)
 	private String numeroInterior;
 
 	public int getId() {

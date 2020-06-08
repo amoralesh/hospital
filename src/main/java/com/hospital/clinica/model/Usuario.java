@@ -29,6 +29,17 @@ public class Usuario {
 	@Column(name="password", nullable = false , length = 255)
 	private String password;
 	
+	@Column(name="nombre1", nullable = false , length = 255)
+	private String nombre;
+	
+	@Column(name="apellido_p", nullable = false , length = 255)
+	private String apellidoP;
+	
+	@Column(name="apellido_m", nullable = false , length = 255)
+	private String apellidoM;
+	
+	@Column(name="estatus", nullable = false, length = 3)
+	private boolean estatus;
 	
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name="usuarios_permisos", joinColumns = @JoinColumn(name="id_usuario", nullable = false,referencedColumnName = "id"),
@@ -70,6 +81,45 @@ public class Usuario {
 	}
 
 
+	public String getNombre() {
+		return nombre;
+	}
+
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+
+	public String getApellidoP() {
+		return apellidoP;
+	}
+
+
+	public void setApellidoP(String apellidoP) {
+		this.apellidoP = apellidoP;
+	}
+
+
+	public String getApellidoM() {
+		return apellidoM;
+	}
+
+
+	public void setApellidoM(String apellidoM) {
+		this.apellidoM = apellidoM;
+	}
+
+
+	public boolean isEstatus() {
+		return estatus;
+	}
+
+
+	public void setEstatus(boolean estatus) {
+		this.estatus = estatus;
+	}
+
 
 	public List<Permisos> getPermisos() {
 		return permisos;
@@ -89,6 +139,9 @@ public class Usuario {
 	public void setImagenUsuario(ImagenUsuario imagenUsuario) {
 		this.imagenUsuario = imagenUsuario;
 	}
+
+
+
 	 
 	
 

@@ -26,7 +26,7 @@ import com.hospital.clinica.service.ImagenPacienteService;
 
 @CrossOrigin(origins="http://localhost:4200")
 @RestController
-@RequestMapping("/imagen")
+@RequestMapping("/imagenes")
 public class ImagenPacienteController {
 	
 	@Autowired

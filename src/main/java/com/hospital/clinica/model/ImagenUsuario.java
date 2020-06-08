@@ -22,10 +22,10 @@ public class ImagenUsuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(name="nombre", length = 500,nullable = false)
+	@Column(name="nombre", length = 255,nullable = false)
 	private String nombre;
 	
-	@Column(name="type", length = 500,nullable = false)
+	@Column(name="type", length = 255,nullable = false)
 	private String type;
 	
 	@Lob

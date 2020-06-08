@@ -24,10 +24,10 @@ public class Doctor {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(name="nombre",length = 200, nullable = false)
+	@Column(name="nombre",length = 255, nullable = false)
 	private String nombre;
 	
-	@Column(name="apellidos", length = 500, nullable = true)
+	@Column(name="apellidos", length = 255, nullable = true)
 	private String apellidos;
 	
 	@Column(name="estatus" ,nullable = false)

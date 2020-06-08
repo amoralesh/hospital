@@ -27,13 +27,13 @@ public class Paciente {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(name="nombre", length = 500,nullable = false)
+	@Column(name="nombre", length = 255,nullable = false)
 	private String nombre;
 	
-	@Column(name="apellido_P", length = 500, nullable = false)
+	@Column(name="apellido_P", length = 255, nullable = false)
 	private String ApellidoP;
 	
-	@Column(name="apellido_M", length = 500, nullable = true)
+	@Column(name="apellido_M", length = 255, nullable = true)
 	private String apellidoM;
 	
 	@Column(name="fecha_nacimiento", nullable = true)

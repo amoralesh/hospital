@@ -1,6 +1,5 @@
 package com.hospital.clinica;
 
-import javax.activation.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

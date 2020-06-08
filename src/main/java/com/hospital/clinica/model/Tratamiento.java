@@ -22,10 +22,10 @@ public class Tratamiento {
     @JoinColumn(name="id_consulta", nullable=false)
 	private Consulta consulta;
 	
-	@Column(name="dosis", length = 10000, nullable = true)
+	@Column(name="dosis", length = 255, nullable = true)
 	private String dosis;
 	
-	@Column(name="cada_cuando",length = 10000,nullable = true )
+	@Column(name="cada_cuando",length = 255,nullable = true )
 	private String cadaCuando;
 	
 	@ManyToOne
