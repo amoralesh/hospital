@@ -25,7 +25,7 @@ public class Consulta {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(name="diagnostico", length = 10000, nullable = false)
+	@Column(name="diagnostico", length = 255, nullable = false)
 	private String diagnostico;
 	
 	@JsonIgnore
