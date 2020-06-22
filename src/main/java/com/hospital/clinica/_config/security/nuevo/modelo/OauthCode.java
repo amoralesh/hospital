@@ -6,11 +6,10 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
 
-import lombok.Data;
+
 
 @Entity
 @Table
-@Data
 public class OauthCode {
 
 	@Id
@@ -20,6 +19,22 @@ public class OauthCode {
 	@Lob 
 	@Column(name = "authentication", length= 16777215  ) //MEDIUM BLOB
 	private byte[] authentication;
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	public byte[] getAuthentication() {
+		return authentication;
+	}
+
+	public void setAuthentication(byte[] authentication) {
+		this.authentication = authentication;
+	}
  
 	
 }

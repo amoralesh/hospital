@@ -16,9 +16,10 @@ import org.springframework.security.oauth2.provider.ClientRegistrationException;
 import org.springframework.security.oauth2.provider.client.BaseClientDetails;
 import org.springframework.stereotype.Service;
 
-import mx.com.pasionprogramada._config.language.Translator;
-import mx.com.pasionprogramada._dao.auth.oauth.OauthClientDetailsDao;
-import mx.com.pasionprogramada._model.auth.oauth2.OauthClientDetails;
+import com.hospital.clinica._config.security.nuevo.modelo.OauthClientDetails;
+import com.hospital.clinica.dao.OauthClientDetailsDao;
+
+
 
 @Service("ClientDetailsService")
 public class ClientDetailService implements ClientDetailsService {
@@ -34,7 +35,7 @@ public class ClientDetailService implements ClientDetailsService {
 		logger.info("ClientDetailService - Clientes");
 		OauthClientDetails client = oauthClientDetailsDao.findByClientId(clientId);
 		if (client == null) {
-			throw new ClientRegistrationException(String.format(Translator.toLocale("notification.login.init.session", new String[] {clientId}), clientId));
+			throw new ClientRegistrationException("algo"+clientId);
 		}
 		BaseClientDetails details = new BaseClientDetails();
 		Set<GrantedAuthority> authorities = new HashSet<GrantedAuthority>();

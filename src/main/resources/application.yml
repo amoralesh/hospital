@@ -13,4 +13,4 @@ spring:
     database-platform: org.hibernate.dialect.MySQL8Dialect
   datasource:    url: jdbc:mysql://localhost:3306/hospitalclinica?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=America/Mexico_City
     username: root
-    password: G1lb3rt0.
+    password: 

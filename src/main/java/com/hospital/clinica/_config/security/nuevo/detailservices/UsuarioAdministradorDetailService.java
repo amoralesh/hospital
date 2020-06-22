@@ -14,9 +14,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import mx.com.pasionprogramada._config.language.Translator;
-import mx.com.pasionprogramada._dao.auth.usuarios.administradores.UsuarioAdministradorDao;
-import mx.com.pasionprogramada._model.auth.usuarios.administradores.UsuarioAdministrador;
+import com.hospital.clinica.dao.UsuarioDao;
+import com.hospital.clinica.model.Usuario;
+
     
 @Service("AdminUserDetailService")
 public class UsuarioAdministradorDetailService implements UserDetailsService {
@@ -24,21 +24,21 @@ public class UsuarioAdministradorDetailService implements UserDetailsService {
 	Logger logger = LoggerFactory.getLogger(UsuarioAdministradorDetailService.class);
 
 	@Autowired
-	private UsuarioAdministradorDao usuarioAdministradorDao;
+	private UsuarioDao usuarioAdministradorDao;
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) {
 		
 		logger.info("loadUserByUsername - Administrador - " + username);
-		UsuarioAdministrador user = usuarioAdministradorDao.findByUsername(username);
+		Usuario user = usuarioAdministradorDao.findOnByUsername(username);
 		
 		if (user == null) {
-			throw new UsernameNotFoundException(String.format(Translator.toLocale("user.detail.service.usuario.noexiste"), username));
+			throw new UsernameNotFoundException("user.detail.service.usuario.noexiste"+username);
 		}
 		
 		List<GrantedAuthority> authorities = new ArrayList<>();
 		user.getPermisos().forEach(permiso -> { 
-			authorities.add(new SimpleGrantedAuthority(permiso.getEtiqueta()));
+			//authorities.add(new SimpleGrantedAuthority(permiso.getEtiqueta()));
 		});
 		UserDetails userDetails = new User(user.getUsername(), user.getPassword(), authorities);
 		return userDetails;

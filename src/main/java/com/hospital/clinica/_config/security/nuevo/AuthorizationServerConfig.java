@@ -35,8 +35,9 @@ import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 
-import mx.com.pasionprogramada._config.security.custom.CustomTokenEnhancer;
-import mx.com.pasionprogramada._config.security.custom.CustomTokenService;
+import com.hospital.clinica._config.security.nuevo.custom.CustomTokenEnhancer;
+import com.hospital.clinica._config.security.nuevo.custom.CustomTokenService;
+
 
 @Configuration
 @EnableAuthorizationServer

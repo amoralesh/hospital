@@ -13,7 +13,7 @@ import org.springframework.security.web.AuthenticationEntryPoint;
 
 //@Configuration
 //@EnableResourceServer
-public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
+public class ResourceServerConfig_ extends ResourceServerConfigurerAdapter {
 
 	@Autowired
 	private ResourceServerTokenServices tokenServices;

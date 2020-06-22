@@ -6,11 +6,10 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
 
-import lombok.Data;
 
 @Entity
 @Table
-@Data
+
 public class OauthRefreshToken {
 
 	@Id
@@ -24,6 +23,30 @@ public class OauthRefreshToken {
 	@Lob 
 	@Column(name = "authentication" , length= 16777215  ) //MEDIUM BLOB
 	private String authentication;
+
+	public String getToken_id() {
+		return token_id;
+	}
+
+	public void setToken_id(String token_id) {
+		this.token_id = token_id;
+	}
+
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
+	}
+
+	public String getAuthentication() {
+		return authentication;
+	}
+
+	public void setAuthentication(String authentication) {
+		this.authentication = authentication;
+	}
 
 	 
 }

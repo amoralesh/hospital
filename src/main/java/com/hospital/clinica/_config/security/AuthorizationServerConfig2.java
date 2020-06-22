@@ -17,7 +17,7 @@ import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenCo
 
 //@Configuration
 //@EnableAuthorizationServer
-public class AuthorizationServerConfig  extends AuthorizationServerConfigurerAdapter{
+public class AuthorizationServerConfig2  extends AuthorizationServerConfigurerAdapter{
 	
 	@Value("${security.jwt.client-id}")
 	private String clientId;

@@ -14,8 +14,9 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.R
 import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.token.ResourceServerTokenServices;
 
-import mx.com.pasionprogramada._exceptions.auth.AccessDeniedHandlerException;
-import mx.com.pasionprogramada._exceptions.auth.AuthException;
+import com.hospital.clinica._config.security.AuthException;
+
+
 
  
 @Configuration
@@ -45,7 +46,6 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
 		http.exceptionHandling()
 		.authenticationEntryPoint(new AuthException()) 
-		.accessDeniedHandler(new AccessDeniedHandlerException()) 
 	    .and()
 		   .authorizeRequests()
 		     .antMatchers( unProtectedPaths ).permitAll()

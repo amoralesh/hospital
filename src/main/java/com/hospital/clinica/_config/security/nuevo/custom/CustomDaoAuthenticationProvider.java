@@ -21,16 +21,17 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.session.SessionAuthenticationException;
+
+import com.hospital.clinica.dao.UsuarioDao;
+import com.hospital.clinica.model.Usuario;
  
 public class CustomDaoAuthenticationProvider implements AuthenticationProvider {
 
 	Logger logger = LoggerFactory.getLogger(this.getClass());
 
-	@Autowired
-	private UsuarioAdministradorDao usuarioAdministradorDao;
 
 	@Autowired
-	public UsuarioPublicoDao usuarioPublicoDao;
+	public UsuarioDao usuarioPublicoDao;
 
 	@Autowired
 	private BCryptPasswordEncoder bcrypt;
@@ -47,50 +48,20 @@ public class CustomDaoAuthenticationProvider implements AuthenticationProvider {
 
 		String username = authentication.getPrincipal().toString();
 		String password = authentication.getCredentials().toString();
-		String huella = null;
-		try {
-			String base64 = request.getParameter("huella"); 
-			huella = base64;
-		} catch (Exception ex) {
-		}
+		
 
 		List<GrantedAuthority> authorities = new ArrayList<>();
 
-		UsuarioAdministrador usuarioAdministrador = usuarioAdministradorDao.findByUsername(username);
-		UsuarioPublico usuarioPublico = usuarioPublicoDao.findByUsernameOrEmail(username, username);
-
-		if (usuarioPublico == null && usuarioAdministrador == null) {
-			throw new UsernameNotFoundException(String.format(Translator.toLocale("login.usuario.noexiste"), username));
-		}
-
-		if (usuarioPublico != null && usuarioAdministrador != null) {
-			throw new SessionAuthenticationException(String.format(Translator.toLocale("login.usuario.same.users"), username));
-		}
-
-		// VALIDACION DE USUARIOS ADMINISTRADORES
-		if (usuarioAdministrador != null) {
-			if (!usuarioAdministrador.isEnabled()) {
-				throw new DisabledException(Translator.toLocale("login.usuario.deshabilitado"));
-			}
-
-			if (!bcrypt.matches(password, usuarioAdministrador.getPassword())) {
-				throw new BadCredentialsException(Translator.toLocale("login.password.incorrecto"));
-			}
-			usuarioAdministrador.getPermisos().forEach(permiso -> {
-				authorities.add(new SimpleGrantedAuthority(permiso.getEtiqueta()));
-			});
-		}
+		Usuario usuarioPublico = usuarioPublicoDao.findOnByUsername(username);
 
 		// VALIDACION DE USUARIOS PUBLICOS
 		if (usuarioPublico != null) {
-			if (!usuarioPublico.isEnabled()) {
-				throw new DisabledException(Translator.toLocale("login.usuario.publico.deshabilitado"));
-			} 
+			
 			if (!bcrypt.matches(password, usuarioPublico.getPassword())) {
-				throw new BadCredentialsException(Translator.toLocale("login.password.incorrecto"));
+				throw new BadCredentialsException("login.password.incorrecto");
 			}
 			usuarioPublico.getPermisos().forEach(permiso -> {
-				authorities.add(new SimpleGrantedAuthority(permiso.getEtiqueta()));
+				//authorities.add(new SimpleGrantedAuthority(permiso.getEtiqueta()));
 			});
 		}
  
