@@ -1,4 +1,4 @@
-package com.hospital.clinica;
+package com.hospital.clinica._config.security;
 
 import java.io.IOException;
 import java.util.HashMap;

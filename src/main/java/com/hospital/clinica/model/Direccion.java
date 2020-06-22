@@ -13,40 +13,40 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="direccion")
+@Table(name = "direccion")
 public class Direccion {
-	
+
 	@Id
-	@Column(name="id")
+	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	@JsonIgnore
 	@OneToOne
-    @JoinColumn (name="id_paciente",nullable = false)
+	@JoinColumn(name = "id_paciente", nullable = false)
 	private Paciente paciente;
-	
+
 	@ManyToOne
-	@JoinColumn(name="entidad_federativa")
+	@JoinColumn(name = "entidad_federativa")
 	private EntidadFederativa entidadFederativa;
-	
+
 	@ManyToOne
-	@JoinColumn(name="alcaldia_municipio")
+	@JoinColumn(name = "alcaldia_municipio")
 	private AlcaldiaMunicipio alcaldiaMunicipio;
-	
-	@Column(name="colonia",length = 10000,nullable = true)
+
+	@Column(name = "colonia", length = 255, nullable = true , unique = false)
 	private String colonia;
-	
-	@Column(name="codigo_postal",length = 5,nullable = true)
+
+	@Column(name = "codigo_postal", length = 5, nullable = true)
 	private int codigoPostal;
-	
-	@Column(name="calle", length = 10000, nullable = true)
+
+	@Column(name = "calle", length = 255, nullable = true)
 	private String calle;
-	
-	@Column(name="numero_exterior", length = 1000, nullable = true)
+
+	@Column(name = "numero_exterior", length = 255, nullable = true)
 	private String numeroExterior;
-	
-	@Column(name="numero_interior", length = 1000, nullable = true)
+
+	@Column(name = "numero_interior", length = 255, nullable = true)
 	private String numeroInterior;
 
 	public int getId() {
@@ -120,6 +120,5 @@ public class Direccion {
 	public void setNumeroInterior(String numeroInterior) {
 		this.numeroInterior = numeroInterior;
 	}
-	
 
 }
