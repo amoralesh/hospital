@@ -43,7 +43,7 @@ import com.hospital.clinica._config.security.nuevo.custom.CustomTokenService;
 @EnableAuthorizationServer
 public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
 
-	Logger logger = LoggerFactory.getLogger(AuthorizationServerConfig.class);
+	//Logger logger = LoggerFactory.getLogger(AuthorizationServerConfig.class);
 
 	@Autowired
 	private TokenStore tokenStore;
